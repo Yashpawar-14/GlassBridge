@@ -6,18 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
 
+    public bool GameOver;
+
+    public Canvas canvas;
 
     public void EndGame()
     {
-        Debug.Log("Gameover");
-        Invoke("Restart", 2f);
+        if (GameOver == false)
+        {
+            GameOver = true;
+            canvas.gameObject.SetActive(true);
+            Debug.Log("GameOver");
+
+        }
     }
 
-    private void Restart()
+
+
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
 }
